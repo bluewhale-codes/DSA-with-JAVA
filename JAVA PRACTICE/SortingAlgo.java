@@ -48,9 +48,39 @@ class sortingAlgo{
 		}
 	}
 
+
+	//QUICK SORT;
+	public static int findPivot(int arr[],int st,int en){
+		 int pivot = arr[en];
+		 int i = st-1;
+		 for(int j=st;j<en;j++){
+
+		 	 if(arr[j]<=pivot){
+		 	 	 i++;
+		 	 	 int temp = arr[j];
+		 	 	 arr[j]=arr[i];
+		 	 	 arr[i]=temp;
+		 	 }
+		 }
+		 i++;
+		 arr[en]=arr[i];
+		 arr[i]=pivot;
+
+		 return i;
+	}
+
+	public static void QuickSort(int arr[],int st,int end){
+		System.out.println("This is quick sort");
+		if(st < end){
+			 int pivot = findPivot(arr,st,end);
+		     QuickSort(arr,st,pivot-1);
+		     QuickSort(arr,pivot+1,end);
+		}
+	}
+
 	public static void main(String args[]){
           int arr[] = {34,6,12,90,45,11,67,23,1,89};
-         InsertionSort(arr);
+         QuickSort(arr,0,arr.length-1);
 
           for(int s:arr){
           	 System.out.print(s+" ");
